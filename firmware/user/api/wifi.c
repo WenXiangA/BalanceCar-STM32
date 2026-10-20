@@ -12,8 +12,10 @@ void USART3_IRQHandler(void)
 	if(USART_GetFlagStatus(USART3, USART_FLAG_RXNE) == SET)
 	{
 		data = USART3->DR;
-		if(wifi.recvOver == 0)
-			wifi.recvData[wifi.recvCount++] = data;
+		if(wifi.recvOver == 0) {
+			if(wifi.recvCount < sizeof(wifi.recvData))
+				wifi.recvData[wifi.recvCount++] = data;
+		}
 	}
 	if(USART_GetFlagStatus(USART3, USART_FLAG_IDLE) == SET)
 	{
@@ -59,7 +61,7 @@ void WIFI_Analysis(void)
 {
 	uint8_t check = 0;
 	if(wifi.recvOver == 0)	return;
-	if(wifi.recvCount < 5)	goto err;
+	if(wifi.recvCount < 6)	goto err;
 	if(wifi.recvData[0] != 0xAA || wifi.recvData[1] != 0x55)	goto err;
 	check = wifi.recvData[0] + wifi.recvData[1] + wifi.recvData[2] + wifi.recvData[3] + wifi.recvData[4];
 	if(check != wifi.recvData[5])	goto err;

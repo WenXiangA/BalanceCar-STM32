@@ -162,10 +162,12 @@ int Read_Speed(int TIMx)
     case 2:
       value_1 = (short)TIM_GetCounter(TIM2);
       TIM_SetCounter(TIM2, 0);
+      EncoderA_Overflow_Count = 0;
       break;
     case 4:
       value_1 = (short)TIM_GetCounter(TIM4);
       TIM_SetCounter(TIM4, 0);
+      EncoderB_Overflow_Count = 0;
       break; 
     default: value_1 = 0;
   }

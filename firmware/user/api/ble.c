@@ -22,6 +22,7 @@ void USART2_IRQHandler(void)
 		data = USART2->DR;
 		USART1->DR = data;
 		Blue_buf[Blue_leng++] = data;
+		if(Blue_leng >= sizeof(Blue_buf)) Blue_leng = 0;
 //		switch(data)
 //		{
 //			case 0x05: LED_OFF(GPIOC,LED1_pin);break;

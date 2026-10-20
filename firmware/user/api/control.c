@@ -36,7 +36,6 @@ void Control_Task(void)
 	Encoder_Right = Read_Speed(ENCODER_B);
 	mpu_dmp_get_data(&Pitch, &Roll, &Yaw);
 	MPU_Get_Gyroscope(&gyrox, &gyroy, &gyroz);
-	MPU_Get_Accelerometer(&aacx, &aacy, &aacz);
 	
 	if(Pitch > 50 || Pitch < -50) {
 		MOTO1 = 0;

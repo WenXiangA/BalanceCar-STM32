@@ -45,8 +45,8 @@ int steer1Angle = 0, steer2Angle = -90;
 void Steer_Init(void)
 {
 	Tim1_Config(72,20000,1500);
-	Steer_SetPWM(1, steer1Angle);
-	Steer_SetPWM(2, steer2Angle);
+	Steer_SetAngle(1, steer1Angle);
+	Steer_SetAngle(2, steer2Angle);
 }
 
 void Steer_SetPWM(uint8_t steer, uint16_t pwm) 
@@ -89,8 +89,8 @@ void Steer_Control(void)
 	}
 	steer1Angle = steer1Angle>90?90:(steer1Angle<-90?(-90):steer1Angle);
 	steer2Angle = steer2Angle>0?0:(steer2Angle<-180?(-180):steer2Angle);
-	Steer_SetPWM(1, steer1Angle);
-	Steer_SetPWM(2, steer2Angle);
+	Steer_SetAngle(1, steer1Angle);
+	Steer_SetAngle(2, steer2Angle);
 }
 
 

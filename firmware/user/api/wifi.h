@@ -6,7 +6,7 @@
 
 typedef struct {
 	uint8_t recvData[256];
-	uint8_t recvCount;
+	uint16_t recvCount;
 	uint8_t recvOver;
 	uint8_t connectFlag;
 }__WIFI_TYPE;
